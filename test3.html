@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Foliensatz 3×2 Matrix – Nur HTML &amp; CSS (elegante Navigation)</title>
+  <link rel="stylesheet" href="test3.css" />
+</head>
+<body>
+  <!-- Radio-Buttons für 6 Folien -->
+  <input type="radio" name="slide" id="s1" checked />
+  <input type="radio" name="slide" id="s2" />
+  <input type="radio" name="slide" id="s3" />
+  <input type="radio" name="slide" id="s4" />
+  <input type="radio" name="slide" id="s5" />
+  <input type="radio" name="slide" id="s6" />
+
+  <div class="slides-wrapper" aria-live="polite">
+    <!-- Folie 1 (Zeile 1, Spalte 1) -->
+    <section class="slide slide-1">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 1</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 1</li>
+          <li>Punkt 2 von Folie 1</li>
+          <li>Punkt 3 von Folie 1</li>
+          <li>Punkt 4 von Folie 1</li>
+          <li>Punkt 5 von Folie 1</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 1, Spalte 1</div>
+      </div>
+    </section>
+
+    <!-- Folie 2 (Zeile 1, Spalte 2) -->
+    <section class="slide slide-2">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 2</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 2</li>
+          <li>Punkt 2 von Folie 2</li>
+          <li>Punkt 3 von Folie 2</li>
+          <li>Punkt 4 von Folie 2</li>
+          <li>Punkt 5 von Folie 2</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 1, Spalte 2</div>
+      </div>
+    </section>
+
+    <!-- Folie 3 (Zeile 1, Spalte 3) -->
+    <section class="slide slide-3">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 3</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 3</li>
+          <li>Punkt 2 von Folie 3</li>
+          <li>Punkt 3 von Folie 3</li>
+          <li>Punkt 4 von Folie 3</li>
+          <li>Punkt 5 von Folie 3</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 1, Spalte 3</div>
+      </div>
+    </section>
+
+    <!-- Folie 4 (Zeile 2, Spalte 1) -->
+    <section class="slide slide-4">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 4</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 4</li>
+          <li>Punkt 2 von Folie 4</li>
+          <li>Punkt 3 von Folie 4</li>
+          <li>Punkt 4 von Folie 4</li>
+          <li>Punkt 5 von Folie 4</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 2, Spalte 1</div>
+      </div>
+    </section>
+
+    <!-- Folie 5 (Zeile 2, Spalte 2) -->
+    <section class="slide slide-5">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 5</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 5</li>
+          <li>Punkt 2 von Folie 5</li>
+          <li>Punkt 3 von Folie 5</li>
+          <li>Punkt 4 von Folie 5</li>
+          <li>Punkt 5 von Folie 5</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 2, Spalte 2</div>
+      </div>
+    </section>
+
+    <!-- Folie 6 (Zeile 2, Spalte 3) -->
+    <section class="slide slide-6">
+      <div class="slide-content">
+        <h1 class="slide-title">Folie 6</h1>
+        <ol class="slide-list">
+          <li>Punkt 1 von Folie 6</li>
+          <li>Punkt 2 von Folie 6</li>
+          <li>Punkt 3 von Folie 6</li>
+          <li>Punkt 4 von Folie 6</li>
+          <li>Punkt 5 von Folie 6</li>
+        </ol>
+        <div class="slide-info">Matrix: Zeile 2, Spalte 3</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Globale Navigation: eine Pfeilsteuerung für alle Folien -->
+  <div class="controls">
+    <div class="nav-grid">
+      <!-- Oben -->
+      <span></span>
+      <div class="nav-cell nav-up">
+        <!-- Platzhalter (wenn kein "hoch" möglich) -->
+        <button class="nav-btn placeholder" aria-hidden="true">↑</button>
+        <!-- von 4 -> 1, von 5 -> 2, von 6 -> 3 -->
+        <label for="s1" class="nav-btn dir-up from4" aria-label="Nach oben zur Folie 1">↑</label>
+        <label for="s2" class="nav-btn dir-up from5" aria-label="Nach oben zur Folie 2">↑</label>
+        <label for="s3" class="nav-btn dir-up from6" aria-label="Nach oben zur Folie 3">↑</label>
+      </div>
+      <span></span>
+
+      <!-- Links -->
+      <div class="nav-cell nav-left">
+        <button class="nav-btn placeholder" aria-hidden="true">←</button>
+        <!-- von 2 -> 1, von 3 -> 2, von 5 -> 4, von 6 -> 5 -->
+        <label for="s1" class="nav-btn dir-left from2" aria-label="Nach links zur Folie 1">←</label>
+        <label for="s2" class="nav-btn dir-left from3" aria-label="Nach links zur Folie 2">←</label>
+        <label for="s4" class="nav-btn dir-left from5" aria-label="Nach links zur Folie 4">←</label>
+        <label for="s5" class="nav-btn dir-left from6" aria-label="Nach links zur Folie 5">←</label>
+      </div>
+
+      <!-- Mitte leer -->
+      <span></span>
+
+      <!-- Rechts -->
+      <div class="nav-cell nav-right">
+        <button class="nav-btn placeholder" aria-hidden="true">→</button>
+        <!-- von 1 -> 2, von 2 -> 3, von 4 -> 5, von 5 -> 6 -->
+        <label for="s2" class="nav-btn dir-right from1" aria-label="Nach rechts zur Folie 2">→</label>
+        <label for="s3" class="nav-btn dir-right from2" aria-label="Nach rechts zur Folie 3">→</label>
+        <label for="s5" class="nav-btn dir-right from4" aria-label="Nach rechts zur Folie 5">→</label>
+        <label for="s6" class="nav-btn dir-right from5" aria-label="Nach rechts zur Folie 6">→</label>
+      </div>
+
+      <!-- Unten -->
+      <span></span>
+      <div class="nav-cell nav-down">
+        <button class="nav-btn placeholder" aria-hidden="true">↓</button>
+        <!-- von 1 -> 4, von 2 -> 5, von 3 -> 6 -->
+        <label for="s4" class="nav-btn dir-down from1" aria-label="Nach unten zur Folie 4">↓</label>
+        <label for="s5" class="nav-btn dir-down from2" aria-label="Nach unten zur Folie 5">↓</label>
+        <label for="s6" class="nav-btn dir-down from3" aria-label="Nach unten zur Folie 6">↓</label>
+      </div>
+      <span></span>
+    </div>
+    <div class="status">
+      Navigation ohne JavaScript: Mit den Pfeil-Buttons zwischen den 6 Folien der 3×2-Matrix wechseln.
+    </div>
+  </div>
+</body>
+</html>
+
+

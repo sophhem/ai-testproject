@@ -1,0 +1,301 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Radio-Buttons verstecken */
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slides-wrapper {
+  position: relative;
+  width: 80vw;
+  max-width: 900px;
+  height: 70vh;
+  max-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Sichtbare Folie abhängig vom gewählten Radio */
+#s1:checked ~ .slides-wrapper .slide-1,
+#s2:checked ~ .slides-wrapper .slide-2,
+#s3:checked ~ .slides-wrapper .slide-3,
+#s4:checked ~ .slides-wrapper .slide-4,
+#s5:checked ~ .slides-wrapper .slide-5,
+#s6:checked ~ .slides-wrapper .slide-6 {
+  display: flex;
+  opacity: 1;
+}
+
+.slide-content {
+  max-width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Inhalt vertikal zentriert */
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.slide-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.slide-list {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 400px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.slide-list li {
+  margin-bottom: 0.3rem;
+}
+
+.slide-info {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Unterschiedliche Hintergründe */
+.slide-1 {
+  background: linear-gradient(135deg, #ff6b6b, #ffb199);
+}
+
+.slide-2 {
+  background: linear-gradient(135deg, #4dabf7, #91e0ff);
+}
+
+.slide-3 {
+  background: linear-gradient(135deg, #51cf66, #c0ffb3);
+}
+
+.slide-4 {
+  background: linear-gradient(135deg, #845ef7, #b197fc);
+}
+
+.slide-5 {
+  background: linear-gradient(135deg, #ffa94d, #ffd8a8);
+}
+
+.slide-6 {
+  background: linear-gradient(135deg, #ff6bcb, #f783ff);
+}
+
+/* Globale Navigationssteuerung */
+.controls {
+  position: fixed;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ddd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  gap: 0.3rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.nav-cell {
+  position: relative;
+}
+
+.nav-btn {
+  border: none;
+  background: #222;
+  color: #eee;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.2rem;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  background: #333;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Platzhalter-Buttons standardmäßig sichtbar */
+.nav-btn.placeholder {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Richtungs-Buttons standardmäßig verstecken */
+.nav-btn.dir-up,
+.nav-btn.dir-down,
+.nav-btn.dir-left,
+.nav-btn.dir-right {
+  display: none;
+}
+
+/* --- Logik: welche Buttons sind in welchem Zustand sichtbar? --- */
+
+/* OBEN: nur bei Folien 4,5,6 */
+#s4:checked ~ .controls .nav-up .placeholder,
+#s5:checked ~ .controls .nav-up .placeholder,
+#s6:checked ~ .controls .nav-up .placeholder {
+  display: none;
+}
+
+#s4:checked ~ .controls .nav-up .dir-up.from4 {
+  display: inline-flex;
+}
+
+#s5:checked ~ .controls .nav-up .dir-up.from5 {
+  display: inline-flex;
+}
+
+#s6:checked ~ .controls .nav-up .dir-up.from6 {
+  display: inline-flex;
+}
+
+/* UNTEN: nur bei Folien 1,2,3 */
+#s1:checked ~ .controls .nav-down .placeholder,
+#s2:checked ~ .controls .nav-down .placeholder,
+#s3:checked ~ .controls .nav-down .placeholder {
+  display: none;
+}
+
+#s1:checked ~ .controls .nav-down .dir-down.from1 {
+  display: inline-flex;
+}
+
+#s2:checked ~ .controls .nav-down .dir-down.from2 {
+  display: inline-flex;
+}
+
+#s3:checked ~ .controls .nav-down .dir-down.from3 {
+  display: inline-flex;
+}
+
+/* LINKS: bei Folien 2,3,5,6 */
+#s2:checked ~ .controls .nav-left .placeholder,
+#s3:checked ~ .controls .nav-left .placeholder,
+#s5:checked ~ .controls .nav-left .placeholder,
+#s6:checked ~ .controls .nav-left .placeholder {
+  display: none;
+}
+
+#s2:checked ~ .controls .nav-left .dir-left.from2 {
+  display: inline-flex;
+}
+
+#s3:checked ~ .controls .nav-left .dir-left.from3 {
+  display: inline-flex;
+}
+
+#s5:checked ~ .controls .nav-left .dir-left.from5 {
+  display: inline-flex;
+}
+
+#s6:checked ~ .controls .nav-left .dir-left.from6 {
+  display: inline-flex;
+}
+
+/* RECHTS: bei Folien 1,2,4,5 */
+#s1:checked ~ .controls .nav-right .placeholder,
+#s2:checked ~ .controls .nav-right .placeholder,
+#s4:checked ~ .controls .nav-right .placeholder,
+#s5:checked ~ .controls .nav-right .placeholder {
+  display: none;
+}
+
+#s1:checked ~ .controls .nav-right .dir-right.from1 {
+  display: inline-flex;
+}
+
+#s2:checked ~ .controls .nav-right .dir-right.from2 {
+  display: inline-flex;
+}
+
+#s4:checked ~ .controls .nav-right .dir-right.from4 {
+  display: inline-flex;
+}
+
+#s5:checked ~ .controls .nav-right .dir-right.from5 {
+  display: inline-flex;
+}
+
+.status {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 700px) {
+  .slides-wrapper {
+    width: 94vw;
+    height: 70vh;
+  }
+  .slide-title {
+    font-size: 1.8rem;
+  }
+  .slide-list {
+    font-size: 1rem;
+  }
+}
+
+
